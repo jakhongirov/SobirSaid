@@ -53,7 +53,7 @@ bot.onText(/\/start/, async (msg) => {
          })
       })
    } else {
-      bot.sendVideo(chatId, 'https://srvr.qiblah.app/files/video.mp4', {
+      bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
          reply_markup: {
             keyboard: [
                [
@@ -70,7 +70,7 @@ bot.onText(/\/start/, async (msg) => {
       }).then(async () => {
          const text = `m=6784c7c8dc2f84a06fd0fe02;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
          const base64Encoded = btoa(text);
-         bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
+         bot.sendMessage(chatId, localText.mainText, {
             reply_markup: {
                inline_keyboard: [
                   [
