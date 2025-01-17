@@ -31,7 +31,7 @@ bot.onText(/\/start/, async (msg) => {
             ]
          }
       }).then(async () => {
-         const text = `m=6784c7c8dc2f84a06fd0fe02;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
+         const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
          const base64Encoded = btoa(text);
          bot.sendMessage(chatId, localText.mainText, {
             reply_markup: {
@@ -68,7 +68,7 @@ bot.onText(/\/start/, async (msg) => {
             ]
          }
       }).then(async () => {
-         const text = `m=6784c7c8dc2f84a06fd0fe02;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
+         const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
          const base64Encoded = btoa(text);
          bot.sendMessage(chatId, localText.mainText, {
             reply_markup: {
