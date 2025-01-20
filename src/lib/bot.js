@@ -8,7 +8,7 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, {
    }
 });
 
-const botPayment = new TelegramBot(process.env.BOT_TOKEN, {
+const botPayment = new TelegramBot(process.env.PAYMENT_BOT, {
    polling: {
       interval: 1000,
       autoStart: true,
