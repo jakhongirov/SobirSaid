@@ -12,21 +12,19 @@ const foundUser = (chatId) => {
 
    return fetch(QUERY, chatId)
 }
-const addUser = (chatId, phoneNumber, name) => {
+const addUser = (chatId, name) => {
    const QUERY = `
       INSERT INTO
          users (
             chat_id,
-            phone_number,
             name
          ) VALUES (
             $1,
-            $2,
-            $3
+            $2
          ) RETURNING *;
    `;
 
-   return fetch(QUERY, chatId, phoneNumber, name)
+   return fetch(QUERY, chatId, name)
 }
 
 module.exports = {
