@@ -15,89 +15,46 @@ bot.onText(/\/start/, async (msg) => {
    const username = msg.from.first_name;
    const foundUser = await model.foundUser(chatId)
 
-   console.log(foundUser)
-
-   if (foundUser) {
-      console.log("bbb")
-
-      bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
+   bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
+      reply_markup: {
+         keyboard: [
+            [
+               {
+                  text: localText.channelBtn
+               }
+            ], [
+               {
+                  text: localText.adminBtn
+               }
+            ]
+         ]
+      }
+   }).then(async () => {
+      const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
+      const base64Encoded = btoa(text);
+      bot.sendMessage(chatId, localText.mainText, {
          reply_markup: {
-            keyboard: [
+            inline_keyboard: [
                [
                   {
-                     text: localText.channelBtn
+                     text: localText.clickBtn,
+                     url: `https://my.click.uz/services/pay?merchant_id=34135&service_id=64727&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Burun%20kursi`
                   }
-               ], [
+               ],
+               [
                   {
-                     text: localText.adminBtn
+                     text: localText.paymeBtn,
+                     url: `https://checkout.paycom.uz/${base64Encoded}`
                   }
                ]
             ]
          }
       }).then(async () => {
-         const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
-         const base64Encoded = btoa(text);
-         bot.sendMessage(chatId, localText.mainText, {
-            reply_markup: {
-               inline_keyboard: [
-                  [
-                     {
-                        text: localText.clickBtn,
-                        url: `https://my.click.uz/services/pay?merchant_id=34135&service_id=64727&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Burun%20kursi`
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.paymeBtn,
-                        url: `https://checkout.paycom.uz/${base64Encoded}`
-                     }
-                  ]
-               ]
-            }
-         })
-      })
-   } else {
-      console.log("aaa")
-      bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
-         reply_markup: {
-            keyboard: [
-               [
-                  {
-                     text: localText.channelBtn
-                  }
-               ], [
-                  {
-                     text: localText.adminBtn
-                  }
-               ]
-            ]
-         }
-      }).then(async () => {
-         const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
-         const base64Encoded = btoa(text);
-         bot.sendMessage(chatId, localText.mainText, {
-            reply_markup: {
-               inline_keyboard: [
-                  [
-                     {
-                        text: localText.clickBtn,
-                        url: `https://my.click.uz/services/pay?merchant_id=34135&service_id=64727&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Burun%20kursi`
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.paymeBtn,
-                        url: `https://checkout.paycom.uz/${base64Encoded}`
-                     }
-                  ]
-               ]
-            }
-         }).then(async () => {
+         if (!foundUser) {
             await model.addUser(chatId, username)
-         })
+         }
       })
-   }
-
+   })
 })
 
 bot.on('message', async (msg) => {
