@@ -39,6 +39,7 @@ bot.onText(/\/start/, async (msg) => {
       const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
       const base64Encoded = btoa(text);
       bot.sendMessage(chatId, localText.mainText, {
+         parse_mode: "HTML",
          reply_markup: {
             inline_keyboard: [
                [
@@ -68,9 +69,13 @@ bot.on('message', async (msg) => {
    const text = msg.text;
 
    if (text == localText.channelBtn) {
-      bot.sendMessage(chatId, localText.channelText)
+      bot.sendMessage(chatId, localText.channelText, {
+         parse_mode: "HTML",
+      })
    } else if (text == localText.adminBtn) {
-      bot.sendMessage(chatId, localText.adminText)
+      bot.sendMessage(chatId, localText.adminText, {
+         parse_mode: "HTML",
+      })
    }
 })
 

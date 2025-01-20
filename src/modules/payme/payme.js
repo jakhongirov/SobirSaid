@@ -212,7 +212,9 @@ module.exports = {
 
 
             if (transaction?.payment == "Burun kursi") {
-               bot.sendMessage(transaction?.chat_id, localText.lessonLink).then(async () => {
+               bot.sendMessage(transaction?.chat_id, localText.lessonLink, {
+                  parse_mode: "HTML",
+               }).then(async () => {
                   // await botPayment.sendMessage(397910090, `PAYME:\n\nChat_id:${transaction?.chat_id}\nTarif:${transaction?.payment}\nAmount:${transaction?.amount}`)
                   await botPayment.sendMessage(634041736, `PAYME:\n\nChat_id:${transaction?.chat_id}\nTarif:${transaction?.payment}\nAmount:${transaction?.amount}`)
                })

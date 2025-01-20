@@ -64,7 +64,9 @@ module.exports = {
                await model.editTrans(click_trans_id, 'paid')
 
                if (param3 == "Burun kursi") {
-                  bot.sendMessage(param2, localText.lessonLink).then(async () => {
+                  bot.sendMessage(param2, localText.lessonLink, {
+                     parse_mode: "HTML",
+                  }).then(async () => {
                      // await botPayment.sendMessage(397910090, `CLICK:\n\nChat_id:${param2}\nTarif:${param3}\nAmount:${amount}`)
                      await botPayment.sendMessage(634041736, `CLICK:\n\nChat_id:${param2}\nTarif:${param3}\nAmount:${amount}`)
                   })
