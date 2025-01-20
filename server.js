@@ -15,7 +15,11 @@ bot.onText(/\/start/, async (msg) => {
    const username = msg.from.first_name;
    const foundUser = await model.foundUser(chatId)
 
+   console.log(foundUser)
+
    if (foundUser) {
+      console.log("bbb")
+
       bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
          reply_markup: {
             keyboard: [
@@ -53,6 +57,7 @@ bot.onText(/\/start/, async (msg) => {
          })
       })
    } else {
+      console.log("aaa")
       bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
          reply_markup: {
             keyboard: [
