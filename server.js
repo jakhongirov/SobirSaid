@@ -10,11 +10,16 @@ const localText = require('./text.json')
 const model = require('./model')
 const { bot } = require('./src/lib/bot');
 
+const processedMessages = new Set();
+
 bot.onText(/\/start/, async (msg) => {
-   console.log('Start command received:', msg);
    const chatId = msg.chat.id;
    const username = msg.from.first_name;
+   const messageId = msg.message_id;
    const foundUser = await model.foundUser(chatId)
+
+   if (processedMessages.has(messageId)) return;
+   processedMessages.add(messageId);
 
    bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
       reply_markup: {
