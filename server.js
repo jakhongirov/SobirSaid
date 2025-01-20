@@ -11,6 +11,7 @@ const model = require('./model')
 const { bot } = require('./src/lib/bot');
 
 bot.onText(/\/start/, async (msg) => {
+   console.log('Start command received:', msg);
    const chatId = msg.chat.id;
    const username = msg.from.first_name;
    const foundUser = await model.foundUser(chatId)
