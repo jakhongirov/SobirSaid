@@ -95,7 +95,7 @@ app.use(express.urlencoded({
 app.use('/file', express.static(path.resolve(__dirname, 'file')))
 app.use("/api/v1", router);
 
-const job = new CronJob('0 16 * * *', async () => {
+const job = new CronJob('0 15 * * *', async () => {
    await sendText();
 });
 
