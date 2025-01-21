@@ -1,6 +1,5 @@
 const { fetch, fetchALL } = require('../../lib/postgres')
 
-
 const addTransaction = (
    click_trans_id,
    amount,
@@ -71,9 +70,23 @@ const editTrans = (click_trans_id, status) => {
 
    return fetch(QUERY, click_trans_id, status)
 }
+const userPaid = (chat_id) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         paid = true
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chat_id)
+}
 
 module.exports = {
    addTransaction,
    foundTrans,
-   editTrans
+   editTrans,
+   userPaid
 }

@@ -64,6 +64,7 @@ module.exports = {
                await model.editTrans(click_trans_id, 'paid')
 
                if (param3 == "Burun kursi") {
+                  await model.userPaid(param2)
                   bot.sendMessage(param2, localText.lessonLink, {
                      parse_mode: "HTML",
                   }).then(async () => {

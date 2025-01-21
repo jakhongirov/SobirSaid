@@ -212,6 +212,7 @@ module.exports = {
 
 
             if (transaction?.payment == "Burun kursi") {
+               await model.userPaid(transaction?.chat_id)
                bot.sendMessage(transaction?.chat_id, localText.lessonLink, {
                   parse_mode: "HTML",
                }).then(async () => {

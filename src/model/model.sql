@@ -2,6 +2,7 @@ CREATE TABLE users (
    id bigserial,
    chat_id bigint PRIMARY KEY,
    name text,
+   paid boolean DEFAULT false,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 

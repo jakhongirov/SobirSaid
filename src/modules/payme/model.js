@@ -162,6 +162,19 @@ const foundTransactionList = (from, to) => {
 
    return fetchALL(QUERY, from, to)
 }
+const userPaid = (chat_id) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         paid = true
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chat_id)
+}
 
 module.exports = {
    foundUser,
@@ -171,5 +184,6 @@ module.exports = {
    updateTransactionPerform,
    updateTransactionPaid,
    updateTransactionState,
-   foundTransactionList
+   foundTransactionList,
+   userPaid
 }
