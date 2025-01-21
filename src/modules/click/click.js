@@ -63,7 +63,7 @@ module.exports = {
             if (merchant_trans_id == "SobirSaid") {
                await model.editTrans(click_trans_id, 'paid')
 
-               if (param3 == "Burun kursi") {
+               if (param3 == "Spreylarsiz hayot") {
                   await model.userPaid(param2)
                   bot.sendMessage(param2, localText.lessonLink, {
                      parse_mode: "HTML",

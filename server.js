@@ -9,6 +9,12 @@ const { PORT } = require('./src/config')
 const localText = require('./text.json')
 const model = require('./model')
 const { bot } = require('./src/lib/bot');
+const {
+   CronJob
+} = require('cron');
+const {
+   sendText
+} = require('./src/lib/cron/cron');
 
 const processedMessages = new Set();
 
@@ -36,7 +42,7 @@ bot.onText(/\/start/, async (msg) => {
          ]
       }
    }).then(async () => {
-      const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Burun%20kursi;ac.ilova=SobirSaid;a=9700000`;
+      const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Spreylarsiz%20hayot;ac.ilova=SobirSaid;a=9700000`;
       const base64Encoded = btoa(text);
       bot.sendMessage(chatId, localText.mainText, {
          parse_mode: "HTML",
@@ -45,7 +51,7 @@ bot.onText(/\/start/, async (msg) => {
                [
                   {
                      text: localText.clickBtn,
-                     url: `https://my.click.uz/services/pay?merchant_id=34135&service_id=64727&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Burun%20kursi`
+                     url: `https://my.click.uz/services/pay?merchant_id=34135&service_id=64727&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Spreylarsiz%20hayot`
                   }
                ],
                [
@@ -89,5 +95,11 @@ app.use(express.urlencoded({
 app.use('/file', express.static(path.resolve(__dirname, 'file')))
 app.use("/api/v1", router);
 
+const job = new CronJob('0 16 * * *', async () => {
+   await sendText();
+});
+
+// Start the job
+job.start();
 
 app.listen(PORT, console.log(PORT))
