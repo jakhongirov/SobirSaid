@@ -43,7 +43,7 @@ bot.onText(/\/start/, async (msg) => {
          resize_keyboard: true
       }
    }).then(async () => {
-      const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Spreylarsiz%20hayot;ac.ilova=SobirSaid;a=9700000`;
+      const text = `m=678e23fe1a1e9b19f9dcfb4eg;ac.user_id=${chatId};ac.tarif=Spreylarsiz%20hayot;ac.ilova=SobirSaid;a=9700000`;
       const base64Encoded = btoa(text);
       bot.sendMessage(chatId, localText.mainText, {
          parse_mode: "HTML",
