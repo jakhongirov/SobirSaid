@@ -39,7 +39,8 @@ bot.onText(/\/start/, async (msg) => {
                   text: localText.adminBtn
                }
             ]
-         ]
+         ],
+         resize_keyboard: true
       }
    }).then(async () => {
       const text = `m=66ba0b7a9412202b2cc2e5aa;ac.user_id=${chatId};ac.tarif=Spreylarsiz%20hayot;ac.ilova=SobirSaid;a=9700000`;
