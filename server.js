@@ -51,7 +51,7 @@ bot.onText(/\/start/, async (msg) => {
                [
                   {
                      text: localText.clickBtn,
-                     url: `https://my.click.uz/services/pay?merchant_id=34135&service_id=64727&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Spreylarsiz%20hayot`
+                     url: `https://my.click.uz/services/pay?merchant_id=28389&service_id=64885&transaction_param=SobirSaid&additional_param3=${chatId}&amount=97000&additional_param4=Spreylarsiz%20hayot`
                   }
                ],
                [
