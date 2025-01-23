@@ -27,7 +27,7 @@ bot.onText(/\/start/, async (msg) => {
    if (processedMessages.has(messageId)) return;
    processedMessages.add(messageId);
 
-   bot.copyMessage(chatId, process.env.CHANNEL_ID, 9, {
+   bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMCZ5IkLpbC7soyWExoWLKV_rI17HAAAvxqAAJjJZhItdP7dFq-c4k2BA", {
       reply_markup: {
          keyboard: [
             [
