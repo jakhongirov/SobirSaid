@@ -27,7 +27,7 @@ bot.onText(/\/start/, async (msg) => {
    if (processedMessages.has(messageId)) return;
    processedMessages.add(messageId);
 
-   bot.copyMessage(chatId, process.env.CHANNEL_ID, 8, {
+   bot.copyMessage(chatId, process.env.CHANNEL_ID, 9, {
       reply_markup: {
          keyboard: [
             [
