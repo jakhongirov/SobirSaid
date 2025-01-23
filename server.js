@@ -32,10 +32,6 @@ bot.onText(/\/start/, async (msg) => {
          keyboard: [
             [
                {
-                  text: localText.channelBtn
-               }
-            ], [
-               {
                   text: localText.adminBtn
                }
             ]
@@ -75,11 +71,7 @@ bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const text = msg.text;
 
-   if (text == localText.channelBtn) {
-      bot.sendMessage(chatId, localText.channelText, {
-         parse_mode: "HTML",
-      })
-   } else if (text == localText.adminBtn) {
+   if (text == localText.adminBtn) {
       bot.sendMessage(chatId, localText.adminText, {
          parse_mode: "HTML",
       })
