@@ -216,8 +216,9 @@ module.exports = {
                bot.sendMessage(transaction?.chat_id, localText.lessonLink, {
                   parse_mode: "HTML",
                }).then(async () => {
-                  // await botPayment.sendMessage(397910090, `PAYME:\n\nChat_id:${transaction?.chat_id}\nTarif:${transaction?.payment}\nAmount:${transaction?.amount}`)
+                  await botPayment.sendMessage(1373142208, `PAYME:\n\nChat_id:${transaction?.chat_id}\nTarif:${transaction?.payment}\nAmount:${transaction?.amount}`)
                   await botPayment.sendMessage(634041736, `PAYME:\n\nChat_id:${transaction?.chat_id}\nTarif:${transaction?.payment}\nAmount:${transaction?.amount}`)
+                  await botPayment.sendMessage(772457382, `PAYME:\n\nChat_id:${transaction?.chat_id}\nTarif:${transaction?.payment}\nAmount:${transaction?.amount}`)
                })
             }
 

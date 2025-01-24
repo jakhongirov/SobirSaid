@@ -15,7 +15,18 @@ const usersList = () => {
 
    return fetchALL(QUERY)
 }
+const userCount = () => {
+   const QUERY = `
+      SELECT
+         count(*)
+      FROM
+         users;
+   `;
+
+   return fetch(QUERY)
+}
 
 module.exports = {
-   usersList
+   usersList,
+   userCount
 }

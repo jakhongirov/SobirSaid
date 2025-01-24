@@ -13,7 +13,8 @@ const {
    CronJob
 } = require('cron');
 const {
-   sendText
+   sendText,
+   sendUserCount
 } = require('./src/lib/cron/cron');
 
 const processedMessages = new Set();
@@ -90,6 +91,7 @@ app.use("/api/v1", router);
 
 const job = new CronJob('0 16 * * *', async () => {
    await sendText();
+   await sendUserCount();
 });
 
 // Start the job

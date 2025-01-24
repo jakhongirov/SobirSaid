@@ -1,7 +1,8 @@
 const model = require('./model')
 const localText = require('../../../text.json')
 const {
-   bot
+   bot,
+   botPayment
 } = require('../bot')
 
 const sendText = async () => {
@@ -32,6 +33,16 @@ const sendText = async () => {
    }
 }
 
+const sendUserCount = async () => {
+   const userCount = await model.usersCount()
+   const content = `User count: ${userCount?.count}`
+
+   botPayment.sendMessage(1373142208, content)
+   botPayment.sendMessage(634041736, content)
+   botPayment.sendMessage(772457382, content)
+}
+
 module.exports = {
-   sendText
+   sendText,
+   sendUserCount
 }
