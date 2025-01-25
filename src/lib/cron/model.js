@@ -1,5 +1,6 @@
 const {
-   fetchALL
+   fetchALL,
+   fetch
 } = require('../postgres')
 
 const usersList = () => {
