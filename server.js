@@ -35,6 +35,11 @@ bot.onText(/\/start/, async (msg) => {
                {
                   text: localText.adminBtn
                }
+            ],
+            [
+               {
+                  text: localText.answersBtn
+               }
             ]
          ],
          resize_keyboard: true
@@ -75,6 +80,10 @@ bot.on('message', async (msg) => {
    if (text == localText.adminBtn) {
       bot.sendMessage(chatId, localText.adminText, {
          parse_mode: "HTML",
+      })
+   } else if (text == localText.answersBtn) {
+      bot.copyMessage(chatId, process.env.CHANNEL_ID, 4).then(async () => {
+         bot.copyMessage(chatId, process.env.CHANNEL_ID, 5)
       })
    }
 })
