@@ -130,8 +130,8 @@ app.use("/api/v1", router);
 // })
 
 const job = new CronJob('0 16 * * *', async () => {
-   await sendText();
    await sendUserCount();
+   await sendText();
 });
 
 // Start the job

@@ -34,7 +34,7 @@ const sendText = async () => {
 }
 
 const sendUserCount = async () => {
-   const userCount = await model.usersCount()
+   const userCount = await model.userCount()
    const content = `User count: ${userCount?.count}`
 
    botPayment.sendMessage(1373142208, content)
