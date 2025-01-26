@@ -8,7 +8,7 @@ const router = require("./src/modules");
 const { PORT } = require('./src/config')
 const localText = require('./text.json')
 const model = require('./model')
-const { bot } = require('./src/lib/bot');
+const { bot, botPayment} = require('./src/lib/bot');
 const {
    CronJob
 } = require('cron');
