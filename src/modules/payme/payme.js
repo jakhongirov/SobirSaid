@@ -211,7 +211,7 @@ module.exports = {
             );
 
 
-            if (transaction?.payment == "Spreylarsiz hayot") {
+            if (transaction?.payment == "Spreylarsiz hayot" || transaction?.payment == "Spreylarsiz%20hayot") {
                await model.userPaid(transaction?.chat_id)
                bot.sendMessage(transaction?.chat_id, localText.lessonLink, {
                   parse_mode: "HTML",
