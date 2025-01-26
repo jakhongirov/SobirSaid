@@ -26,6 +26,15 @@ module.exports = {
                console.log(amount)
                if (Number(amount) == 97000) {
                   await model.addTransaction(click_trans_id, amount, param2, merchant_trans_id, error, error_note, param3, "prepare")
+                  makeCode(4)
+
+                  return res.status(200).json({
+                     merchant_prepare_id: code,
+                     merchant_trans_id: merchant_trans_id,
+                     click_trans_id: click_trans_id,
+                     error: error,
+                     error_note: error_note
+                  })
                } else {
                   console.log(amount)
                   return res.json({
@@ -35,16 +44,6 @@ module.exports = {
                }
             }
          }
-
-         makeCode(4)
-
-         return res.status(200).json({
-            merchant_prepare_id: code,
-            merchant_trans_id: merchant_trans_id,
-            click_trans_id: click_trans_id,
-            error: error,
-            error_note: error_note
-         })
 
       } catch (error) {
          console.log(error)
@@ -72,6 +71,15 @@ module.exports = {
                      await botPayment.sendMessage(634041736, `CLICK:\n\nChat_id:${param2}\nTarif:${param3}\nAmount:${amount}`)
                      await botPayment.sendMessage(772457382, `CLICK:\n\nChat_id:${param2}\nTarif:${param3}\nAmount:${amount}`)
                   })
+
+                  return res.status(200).json({
+                     merchant_prepare_id: 5,
+                     merchant_trans_id: merchant_trans_id,
+                     click_trans_id: click_trans_id,
+                     merchant_confirm_id: null,
+                     error: error,
+                     error_note: error_note
+                  })
                }
 
             } else {
@@ -93,14 +101,6 @@ module.exports = {
             }
          }
 
-         return res.status(200).json({
-            merchant_prepare_id: 5,
-            merchant_trans_id: merchant_trans_id,
-            click_trans_id: click_trans_id,
-            merchant_confirm_id: null,
-            error: error,
-            error_note: error_note
-         })
       } catch (error) {
          console.log(error)
          res.status(500).json({

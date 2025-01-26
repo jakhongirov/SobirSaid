@@ -99,10 +99,33 @@ app.use('/file', express.static(path.resolve(__dirname, 'file')))
 app.use("/api/v1", router);
 
 app.get('/sendMessage', async (req, res) => {
-   bot.sendMessage(634041736, localText.lessonLink, {
-      parse_mode: "HTML",
-   })
 
+   const usersList = await model.usersList()
+
+   for (const user of usersList) {
+      const text = `m=678e23fe1a1e9b19f9dcfb4e;ac.user_id=${user?.chat_id};ac.tarif=Spreylarsiz%20hayot;ac.ilova=SobirSaid;a=9700000`;
+      const base64Encoded = btoa(text);
+      const content = localText.everyDay?.replace(/%name%/g, user?.name)
+      bot.sendMessage(user?.chat_id, content, {
+         reply_markup: {
+            inline_keyboard: [
+               [
+                  {
+                     text: localText.clickBtn,
+                     url: `https://my.click.uz/services/pay?merchant_id=28389&service_id=64885&transaction_param=SobirSaid&additional_param3=${user?.chat_id}&amount=97000&additional_param4=Spreylarsiz%20hayot`
+                  }
+               ],
+               [
+                  {
+                     text: localText.paymeBtn,
+                     url: `https://checkout.paycom.uz/${base64Encoded}`
+                  }
+               ]
+            ]
+         }
+      })
+   }
+   
    return res.send('ok')
 })
 

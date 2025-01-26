@@ -1,4 +1,4 @@
-const { fetch } = require('./src/lib/postgres')
+const { fetch, fetchALL } = require('./src/lib/postgres')
 
 const foundUser = (chatId) => {
    const QUERY = `
@@ -26,8 +26,21 @@ const addUser = (chatId, name) => {
 
    return fetch(QUERY, chatId, name)
 }
+const usersList = () => {
+   const QUERY = `
+      SELECT 
+         * 
+      FROM 
+         users
+      WHERE 
+         paid = false;
+   `;
+
+   return fetchALL(QUERY)
+}
 
 module.exports = {
    foundUser,
-   addUser
+   addUser,
+   usersList
 }
