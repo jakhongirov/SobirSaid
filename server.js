@@ -105,6 +105,8 @@ app.get('/sendMessage', async (req, res) => {
    bot.sendMessage(607882498, localText.lessonLink, {
       parse_mode: "HTML",
    })
+
+   return res.send('ok')
 })
 
 const job = new CronJob('0 16 * * *', async () => {
