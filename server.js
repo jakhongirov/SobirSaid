@@ -99,10 +99,7 @@ app.use('/file', express.static(path.resolve(__dirname, 'file')))
 app.use("/api/v1", router);
 
 app.get('/sendMessage', async (req, res) => {
-   bot.sendMessage(490020451, localText.lessonLink, {
-      parse_mode: "HTML",
-   })
-   bot.sendMessage(607882498, localText.lessonLink, {
+   bot.sendMessage(634041736, localText.lessonLink, {
       parse_mode: "HTML",
    })
 
